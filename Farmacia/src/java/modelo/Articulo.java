@@ -10,16 +10,16 @@ package modelo;
  */
 public class Articulo {
     private int idArticulo;
-    private String descipcion;
+    private String descripcion;
     private float precio;
     private int stockActual;
     private int stockMinimo;
     private boolean ventaLibre;
     private int idTipo;
 
-    public Articulo(int idArticulo, String descipcion, float precio, int stockActual, int stockMinimo, boolean ventaLibre, int idTipo) {
+    public Articulo(int idArticulo, String descripcion, float precio, int stockActual, int stockMinimo, boolean ventaLibre, int idTipo) {
         this.idArticulo = idArticulo;
-        this.descipcion = descipcion;
+        this.descripcion = descripcion;
         this.precio = precio;
         this.stockActual = stockActual;
         this.stockMinimo = stockMinimo;
@@ -35,12 +35,12 @@ public class Articulo {
         this.idArticulo = idArticulo;
     }
 
-    public String getDescipcion() {
-        return descipcion;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setDescipcion(String descipcion) {
-        this.descipcion = descipcion;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public float getPrecio() {
@@ -85,7 +85,7 @@ public class Articulo {
 
     @Override
     public String toString() {
-        return "Articulo{" + "idArticulo=" + idArticulo + ", descipcion=" + descipcion + ", precio=" + precio + ", stockActual=" + stockActual + ", stockMinimo=" + stockMinimo + ", ventaLibre=" + ventaLibre + ", idTipo=" + idTipo + '}';
+        return "Articulo{" + "idArticulo=" + idArticulo + ", descripcion=" + descripcion + ", precio=" + precio + ", stockActual=" + stockActual + ", stockMinimo=" + stockMinimo + ", ventaLibre=" + ventaLibre + ", idTipo=" + idTipo + '}';
     }
     
 }

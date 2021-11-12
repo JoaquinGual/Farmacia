@@ -14,8 +14,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import modelo.Cliente;
+import modelo.Factura;
+import modelo.MetodoPago;
 import modelo.Profesional;
+import modelo.Sucursal;
 
 /**
  *
@@ -46,15 +50,17 @@ public class nuevaFactura extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        
-        
         gestorDB gestor = new gestorDB();
         ArrayList<Cliente> LC = gestor.obtenerClientes();
         ArrayList<Profesional> LP = gestor.obtenerProfesionales();
+        ArrayList<MetodoPago> LMP = gestor.obtenerMetodosPago();
+        ArrayList<Sucursal> LS = gestor.obtenerSucursales();
         
         
+        request.setAttribute("LMP", LMP);
         request.setAttribute("LC", LC);
         request.setAttribute("LP", LP);
+        request.setAttribute("LS", LS);
         RequestDispatcher dispacher = getServletContext().getRequestDispatcher("/RegistrarVentas.jsp");
         dispacher.forward(request, response);
     }
@@ -70,6 +76,20 @@ public class nuevaFactura extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //Insertar Factura
+        int cliente = Integer.parseInt(request.getParameter("cmbClientes"));
+        int profesional = Integer.parseInt(request.getParameter("cmbProfesionales"));
+        int metodoPago = Integer.parseInt(request.getParameter("cmbMetodoPago"));
+        int sucursal = Integer.parseInt(request.getParameter("cmbSucursal"));
+        Factura f = new Factura(0,cliente, profesional, metodoPago, sucursal);
+        gestorDB gestor = new gestorDB();
+        gestor.insertarFactura(f);
+        
+        
+
+        
+        response.sendRedirect("/Farmacia/nuevoDetalle");
+        
 
     }
 

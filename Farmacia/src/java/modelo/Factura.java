@@ -9,11 +9,11 @@ package modelo;
  * @author joako
  */
 public class Factura {
-    private int idFactura;
-    private int idCliente;
-    private int idProfesional;
-    private int idMetodo;
-    private int idSucursal;
+    public int idFactura;
+    public int idCliente;
+    public int idProfesional;
+    public int idMetodo;
+    public int idSucursal;
 
     public Factura(int idFactura, int idCliente, int idProfesional, int idMetodo, int idSucursal) {
         this.idFactura = idFactura;
